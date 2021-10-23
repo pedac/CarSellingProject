@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    
+    <title>Welcome User</title>
+    
+    <style type="text/css">
+    
+    	h2{
+    		font-style: italic; 
+    		font-family: anton; 
+    		color: #FEFCFF; 
+    		font-size: 50px;
+    		font-weight: bolder;
+    	}
+    	
+    	body{
+    		background-image: url("/images/porche.jpg");
+    		height: 100vh; 
+    		width: 100%;
+    		background-size: cover;
+    		background-position: center;
+    		background-repeat: no-repeat;
+    	}
+    	
+    	img{
+    	height: 200px;
+    	max-width: auto;				
+    	}
+    	
+    	table {
+		border-color: white;
+		border-width: 10px;
+		}
+		
+		td{
+			width: 5cm;
+		}
+    	
+    
+    </style>
+    
+</head>
+
+<body style="background-size:cover; background-image: url('https://images.unsplash.com/photo-1585503418537-88331351ad99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80');  background-repeat:no-repeat;
+ ">
+<div>  
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #52b788" >
+
+    
+        <a class="navbar-brand" href="#">
+            <!-- <img th:src="@{/img/plus.png}"  src="../static/img/plus.png" width="auto" height="40" class="d-inline-block align-top" alt=""/> -->
+        </a>
+        
+        <a class="navbar-brand" href="#" style="font-family: 'Kaushan Script', cursive; "; ><span style="color:red; font-size:25px; ">Car</span>Easy</a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+	            <li class="nav-item active mt-1 p-1"><a><b style="color:black;font-size:20px;"><span
+									th:text="${session.userName}">username</span></b></a></li>
+				<li class="nav-item active"><a class="nav-link"
+							th:href="@{/userHome}" href="#"><b style="color:white;font-size:20px;">Home</b></a></li>
+						
+				<li class="nav-item active"><a class="nav-link"
+							th:href="@{/logout}" href="#"><b style="color:white;font-size:20px;">logout</b></a></li>
+
+            </ul>
+
+        </div>
+        
+    </div>
+
+<div class="container-fluid">
+
+<div class="row justify-content-center mb-3 mt-3">
+	<h2>Seller Details</h2>
+</div>
+			
+<div class="d-flex justify-content-center mt-4"   th:object="${User}">
+ 
+	<div class="row"></div>
+	  
+	<div class="card product-card mt-1" style="border-color: #00ffff; border-width: 5px; height: 200px;"><img th:src="@{/images/du.jpg}" style="max-height: 100%; max-width: 100%; width: auto;"
+						class="card-img-top" alt="Seller Image"/></div>
+					
+	<div class="column-col-6 mt-2 ml-2">
+	<table class="table table-bordered">
+	<tr class="table-info"><th>Name  </th> <td th:text="${User.userName}"></td></tr>
+	<tr class="table-info"><th>City  </th> <td th:text="${User.city}"></td></tr>
+	<tr class="table-info"><th>Mobile  </th> <td th:text="${User.mobile}"></td></tr>
+	<tr class="table-info"><th>Email  </th> <td th:text="${User.email}"></td></tr>
+	</table>
+	</div>
+  
+  	</div>
+  	
+  	<div class="row justify-content-center mb-3 mt-5" style="color: white;">
+  	<h1>Thank You ...!</h1>
+	</div>
+  
+  	<div class="row justify-content-center mb-3 mt-3" style="color: white;">
+  	<h3>Please visit again.........</h3>
+  	</div>
+  	
+ </div>
+
+  
+  	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+		integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+		integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+		crossorigin="anonymous"></script>
+  
+ 
+  </body>
+  </html>

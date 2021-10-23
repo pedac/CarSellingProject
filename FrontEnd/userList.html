@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <title>userlist</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #52b788" >
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img th:src="@{/img/plus.png}"  src="../static/img/plus.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
+        </a>
+         <a class="navbar-brand" href="#" style="font-family: 'Kaushan Script', cursive; "; ><span style="color:red; font-size:25px; ">Car</span>Easy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/admin}" href="#"><b style="color:white;font-size:20px;">Home</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/login}" href="#"><b style="color:white;font-size:20px;">Logout</b></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div>
+  <table class="table table-dark table-striped col-md-8 offset-2">
+    <div class="row justify-content-center m-3"><h3>Users of your website</h3><div>
+    <tr>
+    <th>UserId</th>
+    <th>UserName</th>
+    <th>Mobile Number</th>
+    <th>Email</th>
+    <th>City</th>
+<!--     <th>userType</th> -->
+<!--     <th>Delete</th> -->
+    </tr>
+    <tr th:each="user:${users}">
+    <td th:text="${user.userId}"></td>  
+    <td th:text="${user.userName}"></td>
+    <td th:text="${user.Mobile}">  </td>
+    <td th:text="${user.email}"></td>
+    <td th:text="${user.city}"></td>
+    <!--  <td th:text="${user.userType}"></td> -->
+   <!--  <td><a th:href="@{/delete/{userId}(userId=${user.userId})}" class="btn btn-danger">Delete</a></td> -->
+    
+   <!--  @{/deleteForm/{id}(id=${student.id})}" -->
+    
+    </tr>
+  
+  </table>
+
+
+
+
+</div>
+
+</body>
+</html>

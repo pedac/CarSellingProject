@@ -1,0 +1,211 @@
+<!doctype>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+	crossorigin="anonymous">
+<title>Add Vehicle to sell</title>
+<style>
+.footer {
+	position: fixed;
+	height: 5%;
+	bottom: 0;
+	width: 100%;
+	background-color:#52b788;
+	color: black;
+	text-align: center;
+	padding: 10px;
+	font-size: 20px;
+}
+</style>
+
+</head>
+<body
+	style="background-size:cover;background-image: url('https://images.unsplash.com/photo-1585503418537-88331351ad99?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1334&q=80');  background-repeat:no-repeat;
+ ">
+
+	<!--Navbar  -->
+
+
+
+
+		<nav class="navbar navbar-expand-lg navbar-light "  style="background-color: #52b788">
+		
+			<a class="navbar-brand" href="#"
+				style="font-family: 'Kaushan Script', cursive;"; ><span
+				style="color: red; font-size: 25px;">Car</span>Easy</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto"></ul>
+				<ul class="navbar-nav">
+				
+					<li class="nav-item active mt-1 p-1"><a><b style="color:black;font-size:20px;"><span
+								th:text="${session.userName}">username</span></b></a></li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/userHome}" href="#"><b style="color:white;font-size:20px;">Home</b></a></li>
+					
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/logout}" href="#"><b style="color:white;font-size:20px;">Logout</b></a></li>
+				</ul>
+
+			</div>
+		
+	</nav>
+
+	<!--Add vehicle form  -->
+
+
+<div class="container-fluid">
+
+	<div class="row mt-3">
+		<div class="col col-md-4"></div>
+		<div class=" col col-md-4 mb-5 bg-white mr-3">
+			<!--form-->
+			<div class="row justify-content-center mb-3 mt-3">
+				<h2>Add your Vehicle Details</h2>
+			</div>
+
+			<form th:action="@{/add}" th:object="${vehicle}" method="post"
+				enctype="multipart/form-data">
+				<!--product title-->
+
+				<h4>Brand-Company</h4>
+
+				<div class="form-group">
+					<input type="text" class="form-control"
+						placeholder="Enter Name of Brand" name="brand" th:field="*{brand}"
+						/><span
+							th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}"
+							style="color: red"></span>
+				</div>
+				<h4>Model Name</h4>
+
+				<div class="form-group">
+					<input type="text" class="form-control"
+						placeholder="Enter Name of Model" name="model" th:field="*{model}"
+						 /><span
+							th:if="${#fields.hasErrors('model')}" th:errors="*{model}"
+							style="color: red"></span>
+				</div>
+
+				<h4>Fuel Type</h4>
+
+				<div class="form-group">
+					<select class="form-control" name="fuelType" th:field="*{fuelType}"
+						required>
+						<option value="Diesel">Diesel</option>
+						<option value="Petrol">Petrol</option>
+						<option value="CNG">CNG</option>
+						<option value="LPG">LPG</option>
+					</select>
+
+				</div>
+
+				<h4>Passing Year</h4>
+				<div class="form-group">
+					<select class="form-control" name="passingYear"
+						th:field="*{passingYear}" required>
+						<option value="2020">2020</option>
+						<option value="2019">2019</option>
+						<option value="2018">2018</option>
+						<option value="2017">2017</option>
+						<option value="2016">2016</option>
+						<option value="2015">2015</option>
+						<option value="2014">2014</option>
+						<option value="2013">2013</option>
+						<option value="2012">2012</option>
+						<option value="2011">2011</option>
+					</select>
+
+				</div>
+				<h4>
+					Vehicle Running<sub> in Kilometers</sub>
+				</h4>
+
+				<div class="form-group">
+
+					<input type="number" class="form-control"
+						placeholder="Enter Running of Vehicle" name="runningKm"
+						th:field="*{runningKm}" required />
+				</div>
+
+
+
+
+				<div class="form-group">
+					<h4>Owner Type</h4>
+					<select class="form-control mb-2" name="ownerType"
+						th:field="*{ownerType}" required>
+						<option value="First owner">First Owner</option>
+						<option value="Second Owner">Second Owner</option>
+						<option value="Third Owner">Third Owner</option>
+
+					</select>
+				</div>
+				<h4>
+					Excepted Price<sub> in Rupees</sub>
+				</h4>
+
+				<div class="form-group">
+
+					<input type="number" class="form-control"
+						placeholder="Enter Excepted Price" name="exceptedPrice"
+						th:field="*{expectedPrice}" required />
+				</div>
+				<div>
+					<label><h4>Photos: </h4></label> <input type="file" name="image"
+						accept="image/png, image/jpeg" /> <br>
+				</div>
+
+				<div class="form-group">
+					<input type="hidden" class="form-control" placeholder="unsold"
+						th:name="Status" th:value="0" required />
+				</div>
+
+
+				<div class="form-group">
+					<input type="hidden" class="form-control" th:name="userId"
+						th:value="${session.userId}" required />
+				</div>
+
+
+				<div>
+					<input type="submit" class="btn btn-primary m-auto"
+						value="Submit Post">
+				</div>
+
+
+
+
+
+			</form>
+		</div>
+		<div class="col col-md-4"></div>
+	</div>
+			<div class="row">
+			<div class="footer">
+				<b><i class="far fa-copyright"  style="background-color: #52b788"></i> 2021 Copyright: <a
+					href="https://onestopgear.in/" style="color: orange;"> CarEasy</a></b>
+			</div>
+			</div>
+
+</div>
+</body>
+</html>
